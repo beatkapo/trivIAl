@@ -1,0 +1,88 @@
+{
+  "proyecto": {
+    "nombre": "Sistema Trivial Interactivo",
+    "version": "1.0.0",
+    "descripcion": "Sistema completo para crear, personalizar y grabar animaciones de preguntas de trivial"
+  },
+  "rutas": {
+    "core": "src/core",
+    "ui": "src/ui", 
+    "recording": "src/recording",
+    "data": "data",
+    "output": "output",
+    "examples": "examples",
+    "docs": "docs",
+    "assets": "assets"
+  },
+  "archivos": {
+    "preguntasBanco": "data/preguntas_banco.json",
+    "interfazPrincipal": "src/ui/trivial.html",
+    "generadorPreguntas": "src/core/generar_pregunta.js",
+    "grabadorPrincipal": "src/recording/grabar_trivial.js",
+    "grabadorMultiple": "src/recording/grabar_multiple.js"
+  },
+  "tematicas": [
+    {
+      "id": "historia",
+      "nombre": "Historia",
+      "color": "#8B4513",
+      "descripcion": "Preguntas sobre eventos históricos, personajes importantes, fechas relevantes"
+    },
+    {
+      "id": "cultura-general", 
+      "nombre": "Cultura General",
+      "color": "#4A90E2",
+      "descripcion": "Conocimientos generales, capitales, datos curiosos"
+    },
+    {
+      "id": "deportes",
+      "nombre": "Deportes", 
+      "color": "#28A745",
+      "descripcion": "Deportes, reglas, competiciones, atletas famosos"
+    },
+    {
+      "id": "musica",
+      "nombre": "Música",
+      "color": "#9B59B6", 
+      "descripcion": "Compositores, instrumentos, géneros musicales"
+    },
+    {
+      "id": "cine-television",
+      "nombre": "Cine y Televisión",
+      "color": "#E74C3C",
+      "descripcion": "Películas, directores, series, actores"
+    },
+    {
+      "id": "naturaleza-geografia",
+      "nombre": "Naturaleza y Geografía", 
+      "color": "#2ECC71",
+      "descripcion": "Países, ríos, montañas, animales, plantas"
+    },
+    {
+      "id": "famosos",
+      "nombre": "Famosos",
+      "color": "#F39C12",
+      "descripcion": "Celebridades, personajes públicos, artistas"
+    }
+  ],
+  "configuracion": {
+    "ia": {
+      "url": "http://localhost:1234/v1/chat/completions",
+      "modelo": "mistral",
+      "temperatura": 0.7,
+      "maxTokens": 500
+    },
+    "grabacion": {
+      "duracion": 18,
+      "fps": 30,
+      "resolucion": {
+        "ancho": 450,
+        "alto": 800
+      }
+    },
+    "interfaz": {
+      "temporizador": 10,
+      "animacionDuracion": 0.8
+    }
+  }
+}

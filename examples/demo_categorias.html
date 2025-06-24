@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo - Trivial con Categorías</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+        }
+        .categoria {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-left: 4px solid #007bff;
+        }
+        .categoria h3 {
+            margin: 0 0 10px 0;
+            color: #333;
+        }
+        .categoria p {
+            margin: 5px 0;
+            color: #666;
+        }
+        .ejemplo-url {
+            background: #e9ecef;
+            padding: 10px;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 12px;
+            word-break: break-all;
+            margin-top: 10px;
+        }
+        .btn {
+            background: #007bff;
+            color: white;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 10px;
+        }
+        .btn:hover {
+            background: #0056b3;
+        }
+        .historia { border-left-color: #8B4513; }
+        .cultura-general { border-left-color: #4A90E2; }
+        .deportes { border-left-color: #28A745; }
+        .musica { border-left-color: #9B59B6; }
+        .cine-television { border-left-color: #E74C3C; }
+        .naturaleza-geografia { border-left-color: #2ECC71; }
+        .famosos { border-left-color: #F39C12; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎯 Trivial con Categorías - Demo</h1>
+        
+        <div class="categoria historia">
+            <h3>📚 Historia</h3>
+            <p><strong>Temática:</strong> historia</p>
+            <p><strong>Color:</strong> Marrón</p>
+            <p><strong>Ejemplo:</strong> Preguntas sobre eventos históricos, personajes importantes, fechas relevantes.</p>
+            <button class="btn" onclick="abrirCategoria('historia')">Ver Ejemplo</button>
+        </div>
+
+        <div class="categoria cultura-general">
+            <h3>🧠 Cultura General</h3>
+            <p><strong>Temática:</strong> cultura-general</p>
+            <p><strong>Color:</strong> Azul</p>
+            <p><strong>Ejemplo:</strong> Conocimientos generales, capitales, datos curiosos.</p>
+            <button class="btn" onclick="abrirCategoria('cultura-general')">Ver Ejemplo</button>
+        </div>
+
+        <div class="categoria deportes">
+            <h3>⚽ Deportes</h3>
+            <p><strong>Temática:</strong> deportes</p>
+            <p><strong>Color:</strong> Verde</p>
+            <p><strong>Ejemplo:</strong> Deportes, reglas, competiciones, atletas famosos.</p>
+            <button class="btn" onclick="abrirCategoria('deportes')">Ver Ejemplo</button>
+        </div>
+
+        <div class="categoria musica">
+            <h3>🎵 Música</h3>
+            <p><strong>Temática:</strong> musica</p>
+            <p><strong>Color:</strong> Morado</p>
+            <p><strong>Ejemplo:</strong> Compositores, instrumentos, géneros musicales.</p>
+            <button class="btn" onclick="abrirCategoria('musica')">Ver Ejemplo</button>
+        </div>
+
+        <div class="categoria cine-television">
+            <h3>🎬 Cine y Televisión</h3>
+            <p><strong>Temática:</strong> cine-television</p>
+            <p><strong>Color:</strong> Rojo</p>
+            <p><strong>Ejemplo:</strong> Películas, directores, series, actores.</p>
+            <button class="btn" onclick="abrirCategoria('cine-television')">Ver Ejemplo</button>
+        </div>
+
+        <div class="categoria naturaleza-geografia">
+            <h3>🌍 Naturaleza y Geografía</h3>
+            <p><strong>Temática:</strong> naturaleza-geografia</p>
+            <p><strong>Color:</strong> Verde claro</p>
+            <p><strong>Ejemplo:</strong> Países, ríos, montañas, animales, plantas.</p>
+            <button class="btn" onclick="abrirCategoria('naturaleza-geografia')">Ver Ejemplo</button>
+        </div>
+
+        <div class="categoria famosos">
+            <h3>⭐ Famosos</h3>
+            <p><strong>Temática:</strong> famosos</p>
+            <p><strong>Color:</strong> Dorado</p>
+            <p><strong>Ejemplo:</strong> Celebridades, personajes públicos, artistas.</p>
+            <button class="btn" onclick="abrirCategoria('famosos')">Ver Ejemplo</button>
+        </div>
+
+        <div style="text-align: center; margin-top: 30px;">
+            <h3>🔧 Funcionalidades Implementadas</h3>
+            <ul style="text-align: left; display: inline-block;">
+                <li>✅ Parámetros por URL (pregunta, opciones, respuesta correcta, temática)</li>
+                <li>✅ Estilos visuales según la categoría (colores y fondos)</li>
+                <li>✅ Nombre de la categoría visible en la carta</li>
+                <li>✅ Banco de preguntas persistente en JSON</li>
+                <li>✅ Generación de preguntas con IA (Mistral)</li>
+                <li>✅ Evitar preguntas repetidas</li>
+                <li>✅ Animaciones y efectos visuales</li>
+                <li>✅ Grabación automática con Puppeteer</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        function abrirCategoria(tematica) {
+            // Crear una URL de ejemplo con esa temática
+            const urls = {
+                'historia': 'trivial.html?pregunta=%C2%BFEn%20qu%C3%A9%20a%C3%B1o%20cay%C3%B3%20el%20Muro%20de%20Berl%C3%ADn%3F&opcion1=1987&opcion2=1989&opcion3=1991&correcta=2&tematica=historia',
+                'cultura-general': 'trivial.html?pregunta=%C2%BFCu%C3%A1l%20es%20la%20capital%20de%20Australia%3F&opcion1=S%C3%ADdney&opcion2=Melbourne&opcion3=Canberra&correcta=3&tematica=cultura-general',
+                'deportes': 'trivial.html?pregunta=%C2%BFEn%20qu%C3%A9%20deporte%20se%20usa%20el%20t%C3%A9rmino%20%27slam%20dunk%27%3F&opcion1=Voleibol&opcion2=Baloncesto&opcion3=Tenis&correcta=2&tematica=deportes',
+                'musica': 'trivial.html?pregunta=%C2%BFQui%C3%A9n%20compuso%20%27La%20Novena%20Sinfon%C3%ADa%27%3F&opcion1=Mozart&opcion2=Beethoven&opcion3=Bach&correcta=2&tematica=musica',
+                'cine-television': 'trivial.html?pregunta=%C2%BFQui%C3%A9n%20dirigi%C3%B3%20la%20pel%C3%ADcula%20%27Titanic%27%3F&opcion1=Steven%20Spielberg&opcion2=James%20Cameron&opcion3=Martin%20Scorsese&correcta=2&tematica=cine-television',
+                'naturaleza-geografia': 'trivial.html?pregunta=%C2%BFCu%C3%A1l%20es%20el%20r%C3%ADo%20m%C3%A1s%20largo%20del%20mundo%3F&opcion1=Nilo&opcion2=Amazonas&opcion3=Yangts%C3%A9&correcta=1&tematica=naturaleza-geografia',
+                'famosos': 'trivial.html?pregunta=%C2%BFQui%C3%A9n%20es%20conocido%20como%20%27El%20Rey%20del%20Pop%27%3F&opcion1=Elvis%20Presley&opcion2=Michael%20Jackson&opcion3=Prince&correcta=2&tematica=famosos'
+            };
+            
+            window.open(urls[tematica], '_blank');
+        }
+    </script>
+</body>
+</html>

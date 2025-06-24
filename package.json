@@ -1,0 +1,46 @@
+{
+  "name": "sistema-trivial-interactivo",
+  "version": "1.0.0",
+  "description": "Sistema completo para crear, personalizar y grabar animaciones de preguntas de trivial con diferentes temáticas visuales e integración con IA",
+  "main": "inicio.js",
+  "scripts": {
+    "start": "node inicio.js",
+    "demo": "node inicio.js demo",
+    "generar": "node inicio.js generar",
+    "generar-ia": "node inicio.js generar-ia",
+    "grabar": "node inicio.js grabar",
+    "grabar-todas": "node inicio.js grabar-multiple todasTematicas",
+    "grabar-ia": "node inicio.js grabar-multiple todasTematicasIA",
+    "trivial": "node inicio.js trivial",
+    "help": "node inicio.js help",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "trivial",
+    "quiz",
+    "game",
+    "animation",
+    "video",
+    "ai",
+    "mistral",
+    "puppeteer",
+    "ffmpeg"
+  ],
+  "author": "Sistema Trivial",
+  "license": "MIT",
+  "type": "commonjs",
+  "dependencies": {
+    "puppeteer": "^24.10.2"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tu-usuario/sistema-trivial-interactivo"
+  },
+  "bugs": {
+    "url": "https://github.com/tu-usuario/sistema-trivial-interactivo/issues"
+  },
+  "homepage": "https://github.com/tu-usuario/sistema-trivial-interactivo#readme"
+}

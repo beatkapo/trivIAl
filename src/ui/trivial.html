@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tarjeta Trivial</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background: #f0f0f0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .trivial-card {
+      background-image: url('../../assets/verde.png');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      border-radius: 16px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.12);
+      padding: 32px 24px;
+      width: 360px;
+      height: 600px;
+      max-width: 100vw;
+      max-height: 100vh;
+      min-width: 360px;
+      min-height: 600px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      animation: floatIn 0.8s cubic-bezier(.68,-0.55,.27,1.55);
+    }
+    
+    /* Temáticas específicas */
+    .trivial-card.historia {
+      background: linear-gradient(135deg, #8B4513 0%, #A0522D 50%, #D2691E 100%);
+      box-shadow: 0 4px 24px rgba(139,69,19,0.3);
+    }
+    
+    .trivial-card.cultura-general {
+      background: linear-gradient(135deg, #4A90E2 0%, #5BA0F2 50%, #7BB3F0 100%);
+      box-shadow: 0 4px 24px rgba(74,144,226,0.3);
+    }
+    
+    .trivial-card.deportes {
+      background: linear-gradient(135deg, #28A745 0%, #34CE57 50%, #48D364 100%);
+      box-shadow: 0 4px 24px rgba(40,167,69,0.3);
+    }
+    
+    .trivial-card.musica {
+      background: linear-gradient(135deg, #9B59B6 0%, #B370CF 50%, #C885D8 100%);
+      box-shadow: 0 4px 24px rgba(155,89,182,0.3);
+    }
+    
+    .trivial-card.cine-television {
+      background: linear-gradient(135deg, #E74C3C 0%, #F1948A 50%, #F8B2B2 100%);
+      box-shadow: 0 4px 24px rgba(231,76,60,0.3);
+    }
+    
+    .trivial-card.naturaleza-geografia {
+      background: linear-gradient(135deg, #2ECC71 0%, #58D68D 50%, #82E0AA 100%);
+      box-shadow: 0 4px 24px rgba(46,204,113,0.3);
+    }
+    
+    .trivial-card.famosos {
+      background: linear-gradient(135deg, #F39C12 0%, #F7DC6F 50%, #F9E79F 100%);
+      box-shadow: 0 4px 24px rgba(243,156,18,0.3);
+    }
+    
+    /* Bordes de botones según temática */
+    .historia .option { border-color: #8B4513; }
+    .historia .option.correct { border-color: #5D4037; }
+    .historia .option-back { background: #5D4037; border-color: #3E2723; }
+    
+    .cultura-general .option { border-color: #4A90E2; }
+    .cultura-general .option.correct { border-color: #2E5BBA; }
+    .cultura-general .option-back { background: #2E5BBA; border-color: #1E3A8A; }
+    
+    .deportes .option { border-color: #28A745; }
+    .deportes .option.correct { border-color: #1E7E34; }
+    .deportes .option-back { background: #1E7E34; border-color: #155724; }
+    
+    .musica .option { border-color: #9B59B6; }
+    .musica .option.correct { border-color: #7D3C98; }
+    .musica .option-back { background: #7D3C98; border-color: #633974; }
+    
+    .cine-television .option { border-color: #E74C3C; }
+    .cine-television .option.correct { border-color: #C0392B; }
+    .cine-television .option-back { background: #C0392B; border-color: #922B21; }
+    
+    .naturaleza-geografia .option { border-color: #2ECC71; }
+    .naturaleza-geografia .option.correct { border-color: #239B56; }
+    .naturaleza-geografia .option-back { background: #239B56; border-color: #1D8348; }
+    
+    .famosos .option { border-color: #F39C12; }
+    .famosos .option.correct { border-color: #D68910; }
+    .famosos .option-back { background: #D68910; border-color: #B7950B; }
+    @keyframes floatIn {
+      0% { transform: translateY(40px) scale(0.95); opacity: 0; }
+      100% { transform: translateY(0) scale(1); opacity: 1; }
+    }
+    .question {
+      font-family: 'Montserrat', Arial, sans-serif;
+      font-size: 2.3rem;
+      font-weight: 900;
+      color: #ffffff;
+      min-height: 64px;
+      margin-bottom: 24px;
+      letter-spacing: 0.02em;
+      text-align: center;
+      white-space: pre-line;
+      line-height: 1.25;
+      text-shadow: 3px 3px 6px rgba(0,0,0,0.9), 1px 1px 3px rgba(0,0,0,0.8);
+    }
+    .categoria {
+      font-family: 'Montserrat', Arial, sans-serif;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: rgba(255,255,255,0.9);
+      text-align: center;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 16px;
+      padding: 6px 16px;
+      background: rgba(255,255,255,0.15);
+      border-radius: 20px;
+      border: 1px solid rgba(255,255,255,0.2);
+      backdrop-filter: blur(10px);
+      opacity: 0;
+      transform: translateY(-10px);
+      transition: opacity 0.4s, transform 0.4s;
+      align-self: center;
+      width: fit-content;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+    }
+    .categoria.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .temporizador {
+      position: absolute;
+      top: 20px;
+      right: 15px;
+      width: 60px;
+      height: 60px;
+      background: linear-gradient(135deg, #ff6b6b, #ff4757);
+      border: 3px solid #ffffff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Montserrat', Arial, sans-serif;
+      font-size: 1.8rem;
+      font-weight: 900;
+      color: #ffffff;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+      box-shadow: 0 4px 16px rgba(255,107,107,0.4);
+      opacity: 0;
+      transform: scale(0.3) rotate(-180deg);
+      transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      z-index: 10;
+    }
+    .temporizador.show {
+      opacity: 1;
+      transform: scale(1) rotate(0deg);
+    }
+    .temporizador.warning {
+      background: linear-gradient(135deg, #ff9f43, #ff7675);
+      animation: pulse 0.8s ease-in-out infinite alternate;
+    }
+    .temporizador.critical {
+      background: linear-gradient(135deg, #e74c3c, #c0392b);
+      animation: pulse 0.3s ease-in-out infinite alternate;
+    }
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      100% { transform: scale(1.1); }
+    }
+    .options {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      align-items: stretch;
+      flex: 1 1 auto;
+      justify-content: stretch;
+    }
+    .option-container {
+      position: relative;
+      height: 100%;
+      min-height: 0;
+      flex: 1;
+      transform-style: preserve-3d;
+    }
+    .option {
+      opacity: 0;
+      transform: translateY(-20px);
+      background: #ffffff;
+      border: 4px solid #4caf50;
+      border-radius: 8px;
+      height: 100%;
+      width: 100%;
+      min-height: 0;
+      padding: 0;
+      font-family: 'Montserrat', Arial, sans-serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: #272727;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s, border-color 0.2s;
+      box-shadow: 0 3px 8px rgba(44,62,80,0.06);
+      outline: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      letter-spacing: 0.02em;
+      text-shadow: 0 2px 8px rgba(44,62,80,0.06);
+      position: absolute;
+      top: 0;
+      left: 0;
+      backface-visibility: hidden;
+    }
+    .option-back {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #2e7d32;
+      border: 2px solid #1b5e20;
+      border-radius: 8px;
+      transform: rotateX(180deg);
+      backface-visibility: hidden;
+      box-shadow: 0 2px 8px rgba(44,62,80,0.06);
+    }
+    .option.correct {
+      background: rgb(182, 255, 185);
+      border-color: rgb(46, 125, 50);
+      border-width: 3px;
+      color: #1b5e20;
+    }
+    .option.incorrect {
+      background: #ffffff;
+      border-color: #d32f2f;
+      border-width: 3px;
+      color: #b71c1c;
+    }
+    .option.show {
+      opacity: 1;
+      transform: translateY(0);
+      transition: opacity 0.4s, transform 0.4s;
+    }
+    .option-container.flip {
+      animation: flipX 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    }
+    @keyframes flipX {
+      0% { transform: rotateX(0deg) translateY(0); }
+      50% { transform: rotateX(180deg) translateY(-10px); }
+      100% { transform: rotateX(360deg) translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <div class="temporizador" id="temporizador">10</div>
+  <div class="trivial-card">
+    <div class="categoria" id="categoria"></div>
+    <div class="question" id="question"></div>
+    <div class="options" id="options">
+      <div class="option-container">
+        <button class="option" id="option1"></button>
+        <div class="option-back"></div>
+      </div>
+      <div class="option-container">
+        <button class="option" id="option2"></button>
+        <div class="option-back"></div>
+      </div>
+      <div class="option-container">
+        <button class="option" id="option3"></button>
+        <div class="option-back"></div>
+      </div>
+    </div>
+  </div>
+  <script>
+    // Función para obtener parámetros de la URL
+    function getURLParams() {
+      const params = new URLSearchParams(window.location.search);
+      return {
+        pregunta: params.get('pregunta'),
+        opcion1: params.get('opcion1'),
+        opcion2: params.get('opcion2'),
+        opcion3: params.get('opcion3'),
+        correcta: parseInt(params.get('correcta')),
+        tematica: params.get('tematica')
+      };
+    }
+
+    // Datos por defecto (se usan si no hay parámetros en la URL)
+    const datosDefecto = {
+      pregunta: "¿Cuál es el planeta más grande del sistema solar?",
+      opciones: [
+        { texto: "Marte", correcta: false },
+        { texto: "Júpiter", correcta: true },
+        { texto: "Venus", correcta: false }
+      ]
+    };
+
+    // Función para construir los datos desde parámetros URL o usar los por defecto
+    function construirDatos() {
+      const params = getURLParams();
+      
+      if (params.pregunta && params.opcion1 && params.opcion2 && params.opcion3 && params.correcta) {
+        return {
+          pregunta: decodeURIComponent(params.pregunta),
+          opciones: [
+            { texto: decodeURIComponent(params.opcion1), correcta: params.correcta === 1 },
+            { texto: decodeURIComponent(params.opcion2), correcta: params.correcta === 2 },
+            { texto: decodeURIComponent(params.opcion3), correcta: params.correcta === 3 }
+          ],
+          tematica: params.tematica
+        };
+      } else {
+        return {
+          ...datosDefecto,
+          tematica: params.tematica
+        };
+      }
+    }
+
+    // Función para aplicar la temática
+    function aplicarTematica(tematica) {
+      const trivialCard = document.querySelector('.trivial-card');
+      const tematicasValidas = [
+        'historia', 'cultura-general', 'deportes', 'musica', 
+        'cine-television', 'naturaleza-geografia', 'famosos'
+      ];
+      
+      if (tematica && tematicasValidas.includes(tematica)) {
+        trivialCard.classList.add(tematica);
+      }
+    }
+
+    // Función para convertir temática a nombre legible
+    function obtenerNombreTematica(tematica) {
+      const nombres = {
+        'historia': 'Historia',
+        'cultura-general': 'Cultura General',
+        'deportes': 'Deportes',
+        'musica': 'Música',
+        'cine-television': 'Cine y Televisión',
+        'naturaleza-geografia': 'Naturaleza y Geografía',
+        'famosos': 'Famosos'
+      };
+      
+      return nombres[tematica] || 'Pregunta General';
+    }
+
+    // Función para mostrar la categoría
+    function mostrarCategoria(tematica) {
+      const categoriaEl = document.getElementById('categoria');
+      const nombreCategoria = obtenerNombreTematica(tematica);
+      
+      categoriaEl.textContent = nombreCategoria;
+      
+      // Mostrar con animación después de un pequeño delay
+      setTimeout(() => {
+        categoriaEl.classList.add('show');
+      }, 200);
+    }
+
+    // Usar los datos construidos
+    const datos = construirDatos();
+    const pregunta = datos.pregunta;
+    const opciones = datos.opciones;
+
+    // Aplicar la temática si está definida
+    aplicarTematica(datos.tematica);
+
+    // Mostrar la categoría si está definida
+    if (datos.tematica) {
+      mostrarCategoria(datos.tematica);
+    }
+
+    const questionEl = document.getElementById('question');
+    const categoriaEl = document.getElementById('categoria');
+    const temporizadorEl = document.getElementById('temporizador');
+    const optionsEl = document.getElementById('options');
+    const optionBtns = [
+      document.getElementById('option1'),
+      document.getElementById('option2'),
+      document.getElementById('option3')
+    ];
+    const optionContainers = [
+      optionBtns[0].parentElement,
+      optionBtns[1].parentElement,
+      optionBtns[2].parentElement
+    ];
+
+    // Variables del temporizador
+    let tiempoRestante = 10;
+    let intervaloTemporizador = null;
+
+    // Funciones del temporizador
+    function iniciarTemporizador() {
+      temporizadorEl.classList.add('show');
+      
+      intervaloTemporizador = setInterval(() => {
+        tiempoRestante--;
+        temporizadorEl.textContent = tiempoRestante;
+        
+        // Cambiar colores según el tiempo restante
+        if (tiempoRestante <= 3) {
+          temporizadorEl.classList.add('critical');
+          temporizadorEl.classList.remove('warning');
+        } else if (tiempoRestante <= 6) {
+          temporizadorEl.classList.add('warning');
+          temporizadorEl.classList.remove('critical');
+        }
+        
+        // Cuando llega a 0, hacer click automático en la respuesta correcta
+        if (tiempoRestante <= 0) {
+          detenerTemporizador();
+          const indiceCorrecta = opciones.findIndex(op => op.correcta);
+          if (indiceCorrecta !== -1) {
+            optionBtns[indiceCorrecta].click();
+          }
+        }
+      }, 1000);
+    }
+
+    function detenerTemporizador() {
+      if (intervaloTemporizador) {
+        clearInterval(intervaloTemporizador);
+        intervaloTemporizador = null;
+      }
+    }
+
+    // Inicialmente ocultar opciones
+    optionsEl.style.pointerEvents = 'none';
+    optionBtns.forEach(btn => {
+      btn.style.visibility = 'hidden';
+    });
+
+    // Animación de escritura letra por letra
+    function escribirPregunta(texto, i = 0, cb) {
+      if (i <= texto.length) {
+        questionEl.textContent = texto.slice(0, i);
+        setTimeout(() => escribirPregunta(texto, i + 1, cb), 32);
+      } else if (cb) {
+        cb();
+      }
+    }
+
+    // Mostrar opciones una a una
+    function mostrarOpciones() {
+      opciones.forEach((op, idx) => {
+        setTimeout(() => {
+          optionBtns[idx].textContent = op.texto;
+          optionBtns[idx].style.visibility = 'visible';
+          optionBtns[idx].classList.add('show');
+        }, 400 * idx);
+      });
+      setTimeout(() => {
+        optionsEl.style.pointerEvents = 'auto';
+        
+        // Iniciar temporizador después de mostrar todas las opciones
+        iniciarTemporizador();
+      }, 400 * opciones.length);
+    }
+
+    // Manejar selección
+    optionBtns.forEach((btn, idx) => {
+      btn.addEventListener('click', () => {
+        // Detener temporizador cuando se hace click
+        detenerTemporizador();
+        
+        optionBtns.forEach((b, i) => {
+          b.disabled = true;
+          if (opciones[i].correcta) {
+            b.classList.add('correct');
+            // Agregar animación de giro al contenedor para la respuesta correcta
+            optionContainers[i].classList.add('flip');
+          } else if (i === idx) {
+            b.classList.add('incorrect');
+          }
+        });
+      });
+    });
+
+    // Iniciar animación
+    escribirPregunta(pregunta, 0, () => {
+      setTimeout(mostrarOpciones, 1500);
+    });
+  </script>
+</body>
+</html> 

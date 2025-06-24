@@ -1,0 +1,202 @@
+[
+  {
+    "pregunta": "¿En qué año cayó el Muro de Berlín?",
+    "opciones": [
+      "1987",
+      "1989",
+      "1991"
+    ],
+    "correcta": 2,
+    "tematica": "historia"
+  },
+  {
+    "pregunta": "¿Quién fue el primer emperador romano?",
+    "opciones": [
+      "Julio César",
+      "Augusto",
+      "Nerón"
+    ],
+    "correcta": 2,
+    "tematica": "historia"
+  },
+  {
+    "pregunta": "¿Cuál es la capital de Australia?",
+    "opciones": [
+      "Sídney",
+      "Melbourne",
+      "Canberra"
+    ],
+    "correcta": 3,
+    "tematica": "cultura-general"
+  },
+  {
+    "pregunta": "¿Cuántos continentes hay en el mundo?",
+    "opciones": [
+      "5",
+      "6",
+      "7"
+    ],
+    "correcta": 3,
+    "tematica": "cultura-general"
+  },
+  {
+    "pregunta": "¿En qué deporte se usa el término 'slam dunk'?",
+    "opciones": [
+      "Voleibol",
+      "Baloncesto",
+      "Tenis"
+    ],
+    "correcta": 2,
+    "tematica": "deportes"
+  },
+  {
+    "pregunta": "¿Cada cuántos años se celebran los Juegos Olímpicos?",
+    "opciones": [
+      "2 años",
+      "4 años",
+      "6 años"
+    ],
+    "correcta": 2,
+    "tematica": "deportes"
+  },
+  {
+    "pregunta": "¿Quién compuso 'La Novena Sinfonía'?",
+    "opciones": [
+      "Mozart",
+      "Beethoven",
+      "Bach"
+    ],
+    "correcta": 2,
+    "tematica": "musica"
+  },
+  {
+    "pregunta": "¿Cuántas cuerdas tiene una guitarra estándar?",
+    "opciones": [
+      "4",
+      "6",
+      "8"
+    ],
+    "correcta": 2,
+    "tematica": "musica"
+  },
+  {
+    "pregunta": "¿Quién dirigió la película 'Titanic'?",
+    "opciones": [
+      "Steven Spielberg",
+      "James Cameron",
+      "Martin Scorsese"
+    ],
+    "correcta": 2,
+    "tematica": "cine-television"
+  },
+  {
+    "pregunta": "¿En qué año se estrenó la primera película de Star Wars?",
+    "opciones": [
+      "1975",
+      "1977",
+      "1979"
+    ],
+    "correcta": 2,
+    "tematica": "cine-television"
+  },
+  {
+    "pregunta": "¿Cuál es el río más largo del mundo?",
+    "opciones": [
+      "Nilo",
+      "Amazonas",
+      "Yangtsé"
+    ],
+    "correcta": 1,
+    "tematica": "naturaleza-geografia"
+  },
+  {
+    "pregunta": "¿Cuál es el desierto más grande del mundo?",
+    "opciones": [
+      "Sahara",
+      "Gobi",
+      "Antártida"
+    ],
+    "correcta": 3,
+    "tematica": "naturaleza-geografia"
+  },
+  {
+    "pregunta": "¿Quién es conocido como 'El Rey del Pop'?",
+    "opciones": [
+      "Elvis Presley",
+      "Michael Jackson",
+      "Prince"
+    ],
+    "correcta": 2,
+    "tematica": "famosos"
+  },
+  {
+    "pregunta": "¿Cuál es el nombre real de Lady Gaga?",
+    "opciones": [
+      "Stefani Germanotta",
+      "Christina Aguilera",
+      "Britney Spears"
+    ],
+    "correcta": 1,
+    "tematica": "famosos"
+  },
+  {
+    "pregunta": "¿En qué año se estrenó la película 'La La Land'?",
+    "opciones": [
+      "2014",
+      "2016",
+      "2018"
+    ],
+    "correcta": 2,
+    "tematica": "cine-television"
+  },
+  {
+    "pregunta": "En qué deporte se usan paletas de hielo y se dividen en dos equipos: one hand, doubles y singles?",
+    "opciones": [
+      "Fútbol",
+      "Tenis de mesa",
+      "Hockey sobre hielo"
+    ],
+    "correcta": 3,
+    "tematica": "deportes"
+  },
+  {
+    "pregunta": "¿Cuál es la capital de Canadá?",
+    "opciones": [
+      "Vancouver",
+      "Toronto",
+      "Ottawa"
+    ],
+    "correcta": 3,
+    "tematica": "cultura-general"
+  },
+  {
+    "pregunta": "En qué año se estrenó la película 'Avatar'?",
+    "opciones": [
+      "2005",
+      "2009",
+      "2013"
+    ],
+    "correcta": 2,
+    "tematica": "cine-television"
+  },
+  {
+    "pregunta": "En qué año se fundó la ONU (Organización de las Naciones Unidas)?",
+    "opciones": [
+      "1942",
+      "1945",
+      "1948"
+    ],
+    "correcta": 2,
+    "tematica": "historia"
+  },
+  {
+    "pregunta": "En qué año se estrenó la primera película de Star Trek?",
+    "opciones": [
+      "1964",
+      "1966",
+      "1968"
+    ],
+    "correcta": 1,
+    "tematica": "cine-television"
+  }
+]
