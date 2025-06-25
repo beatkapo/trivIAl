@@ -6,7 +6,7 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const response_0 = await fetch("https://github.com/gradio-app/gradio/raw/main/test/test_files/audio_sample.wav");
+const response_0 = await fetch("https://github.com/beatkapo/trivIAl/blob/main/examples/audio_sample.wav");
 const exampleAudio = await response_0.blob();
 						
 const client = await Client.connect("jpgallegoar/Spanish-F5");
