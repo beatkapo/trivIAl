@@ -42,5 +42,8 @@
   "bugs": {
     "url": "https://github.com/tu-usuario/sistema-trivial-interactivo/issues"
   },
-  "homepage": "https://github.com/tu-usuario/sistema-trivial-interactivo#readme"
+  "homepage": "https://github.com/tu-usuario/sistema-trivial-interactivo#readme",
+  "devDependencies": {
+    "@gradio/client": "^1.15.3"
+  }
 }

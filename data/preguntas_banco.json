@@ -192,11 +192,31 @@
   {
     "pregunta": "En qué año se estrenó la primera película de Star Trek?",
     "opciones": [
-      "1964",
+      "1979",
       "1966",
       "1968"
     ],
     "correcta": 1,
     "tematica": "cine-television"
+  },
+  {
+    "pregunta": "¿En qué año se fundó la NBA (National Basketball Association)?",
+    "opciones": [
+      "1937",
+      "1949",
+      "1960"
+    ],
+    "correcta": 2,
+    "tematica": "deportes"
+  },
+  {
+    "pregunta": "¿En qué deporte se usan raquetas y se dividen en dos equipos?",
+    "opciones": [
+      "Fútbol",
+      "Tenis de mesa",
+      "Hockey"
+    ],
+    "correcta": 2,
+    "tematica": "deportes"
   }
 ]
