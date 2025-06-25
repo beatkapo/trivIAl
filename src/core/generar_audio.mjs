@@ -6,15 +6,19 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+const refText = "En el primer programa de Futuroimperfecto de esta nueva etapa, de este nuevo proyecto, en un arranque que me dio tipo charla Ted, dije: El humor es más fuerte que el odio. Y bueno, gustó mucho eso, no?. Y los programas también, estamos muy contentos, de verdad, la aceptación maravillosa. Muchísimas gracias. Pero la semana pasada, ante el escándalo de corrupción del PSOE, el tsunami informativo de aquella tarde noche, acaparó la atención de la mayoría de la gente, que yo pensé: A ver, Andreu, si el humor es más fuerte que el odio, sí vale. Pero la corrupción lo contamina todo, incluso el propio humor, que ha pasado aquí. Solución, digo: Júntalo todo."
+
+
+const genText = "Agarrame de las pelotas. Esto es una prueba de texto para generar un audio con la voz de Andreu Buenafuente. Vamos a ver cómo suena."; 
 const response_0 = await fetch("https://github.com/beatkapo/trivIAl/blob/main/examples/audio_sample.wav");
 const exampleAudio = await response_0.blob();
 						
 const client = await Client.connect("jpgallegoar/Spanish-F5");
 const result = await client.predict("/infer", { 
 				ref_audio_orig: exampleAudio, 		
-		ref_text: "Hello!!", 		
-		gen_text: "Agarrame de las pelotas", 		
-		model: "F5-TTS", 		
+		ref_text: refText, 		
+		gen_text: genText, 		
+		model: "F5-TTS",
 		remove_silence: true, 		
 		cross_fade_duration: 0, 		
 		speed: 0.3, 
