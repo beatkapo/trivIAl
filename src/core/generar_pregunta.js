@@ -10,7 +10,7 @@ async function consultarMistral(prompt) {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-                model: "mistral",
+                model: "openhermes-2.5-mistral-7b",
                 messages: [
                     {
                         role: "user",
@@ -34,13 +34,77 @@ async function consultarMistral(prompt) {
     }
 }
 
+// Función para verificar si una pregunta ya existe o es similar
+function esPreguntaSimilar(nuevaPregunta) {
+    // Normalizar texto para comparación (minúsculas, sin acentos, sin signos de puntuación)
+    function normalizar(texto) {
+        return texto.toLowerCase()
+            .normalize("NFD").replace(/[\u0300-\u036f]/g, "") // Quitar acentos
+            .replace(/[^\w\s]/g, "") // Quitar signos de puntuación
+            .replace(/\s+/g, " ") // Normalizar espacios
+            .trim();
+    }
+    
+    const preguntaNormalizada = normalizar(nuevaPregunta.pregunta);
+    
+    for (const preguntaExistente of preguntas) {
+        const existenteNormalizada = normalizar(preguntaExistente.pregunta);
+        
+        // Verificar si es exactamente la misma pregunta
+        if (preguntaNormalizada === existenteNormalizada) {
+            return true;
+        }
+        
+        // Verificar similitud por palabras clave (al menos 70% de coincidencia)
+        const palabrasNueva = preguntaNormalizada.split(" ").filter(p => p.length > 3);
+        const palabrasExistente = existenteNormalizada.split(" ").filter(p => p.length > 3);
+        
+        if (palabrasNueva.length > 0 && palabrasExistente.length > 0) {
+            const coincidencias = palabrasNueva.filter(palabra => 
+                palabrasExistente.some(pe => pe.includes(palabra) || palabra.includes(pe))
+            ).length;
+            
+            const porcentajeSimilitud = coincidencias / Math.max(palabrasNueva.length, palabrasExistente.length);
+            
+            if (porcentajeSimilitud >= 0.7) {
+                return true;
+            }
+        }
+        
+        // Verificar si las opciones son muy similares
+        const opcionesNueva = nuevaPregunta.opciones.map(normalizar);
+        const opcionesExistente = preguntaExistente.opciones.map(normalizar);
+        
+        let opcionesSimilares = 0;
+        for (const opcionNueva of opcionesNueva) {
+            for (const opcionExistente of opcionesExistente) {
+                if (opcionNueva === opcionExistente || 
+                    (opcionNueva.length > 3 && opcionExistente.includes(opcionNueva)) ||
+                    (opcionExistente.length > 3 && opcionNueva.includes(opcionExistente))) {
+                    opcionesSimilares++;
+                    break;
+                }
+            }
+        }
+        
+        // Si 2 o más opciones son similares, considerar pregunta similar
+        if (opcionesSimilares >= 2) {
+            return true;
+        }
+    }
+    
+    return false;
+}
+
 // Función para generar pregunta con IA
 async function generarPreguntaConIA() {
-    try {
-        // Crear el prompt con las preguntas existentes
-        const preguntasExistentes = JSON.stringify(preguntas, null, 2);
-        
-        const prompt = `Genera una pregunta aleatoria de los siguientes temas: historia, cultura general, deportes, música, cine y televisión, naturaleza y geografía y famosos.
+    const maxIntentos = 5; // Máximo número de intentos para generar una pregunta única
+    
+    for (let intento = 1; intento <= maxIntentos; intento++) {
+        try {
+            console.log(`Intento ${intento} de generar pregunta única...`);
+            
+            const prompt = `Genera una pregunta original y única de los siguientes temas: historia, cultura general, deportes, música, cine y televisión, naturaleza y geografía y famosos.
 
 Devuelve en formato JSON con esta estructura exacta:
 {
@@ -53,53 +117,68 @@ Devuelve en formato JSON con esta estructura exacta:
 IMPORTANTE:
 - "correcta" debe ser 1, 2 o 3 (indicando cuál opción es correcta)
 - "tematica" debe ser uno de estos valores exactos: "historia", "cultura-general", "deportes", "musica", "cine-television", "naturaleza-geografia", "famosos"
+- La pregunta debe ser completamente original y diferente a cualquier pregunta existente
 - Solo devuelve el JSON, sin texto adicional
+- Intento número: ${intento}`;
 
-No uses las siguientes preguntas, pero puedes basarte en ellas:
-${preguntasExistentes}`;
-
-        const respuesta = await consultarMistral(prompt);
-        
-        if (!respuesta) {
-            throw new Error('No se recibió respuesta del modelo');
-        }
-
-        // Intentar parsear la respuesta JSON
-        let nuevaPregunta;
-        try {
-            // Limpiar la respuesta para extraer solo el JSON
-            const jsonMatch = respuesta.match(/\{[\s\S]*\}/);
-            if (!jsonMatch) {
-                throw new Error('No se encontró JSON válido en la respuesta');
-            }
+            const respuesta = await consultarMistral(prompt);
             
-            nuevaPregunta = JSON.parse(jsonMatch[0]);
-        } catch (parseError) {
-            console.error('Error parseando JSON:', parseError);
-            console.error('Respuesta recibida:', respuesta);
-            return null;
+            if (!respuesta) {
+                console.log(`Intento ${intento}: No se recibió respuesta del modelo`);
+                continue;
+            }
+
+            // Intentar parsear la respuesta JSON
+            let nuevaPregunta;
+            try {
+                // Limpiar la respuesta para extraer solo el JSON
+                const jsonMatch = respuesta.match(/\{[\s\S]*\}/);
+                if (!jsonMatch) {
+                    console.log(`Intento ${intento}: No se encontró JSON válido en la respuesta`);
+                    continue;
+                }
+                
+                nuevaPregunta = JSON.parse(jsonMatch[0]);
+            } catch (parseError) {
+                console.error(`Intento ${intento}: Error parseando JSON:`, parseError);
+                console.error('Respuesta recibida:', respuesta);
+                continue;
+            }
+
+            // Validar la estructura
+            if (!nuevaPregunta.pregunta || !nuevaPregunta.opciones || 
+                !nuevaPregunta.correcta || !nuevaPregunta.tematica ||
+                nuevaPregunta.opciones.length !== 3) {
+                console.log(`Intento ${intento}: Estructura de pregunta inválida`);
+                continue;
+            }
+
+            // Verificar si la pregunta ya existe o es similar
+            if (esPreguntaSimilar(nuevaPregunta)) {
+                console.log(`Intento ${intento}: Pregunta similar ya existe, generando otra...`);
+                continue;
+            }
+
+            // Si llegamos aquí, la pregunta es única
+            console.log(`¡Pregunta única generada en el intento ${intento}!`);
+            
+            // Agregar la nueva pregunta al banco
+            preguntas.push(nuevaPregunta);
+
+            // Guardar las preguntas actualizadas en un archivo
+            guardarPreguntas();
+
+            console.log('Nueva pregunta generada:', nuevaPregunta);
+            return nuevaPregunta;
+
+        } catch (error) {
+            console.error(`Intento ${intento}: Error generando pregunta con IA:`, error);
         }
-
-        // Validar la estructura
-        if (!nuevaPregunta.pregunta || !nuevaPregunta.opciones || 
-            !nuevaPregunta.correcta || !nuevaPregunta.tematica ||
-            nuevaPregunta.opciones.length !== 3) {
-            throw new Error('Estructura de pregunta inválida');
-        }
-
-        // Agregar la nueva pregunta al banco
-        preguntas.push(nuevaPregunta);
-
-        // Guardar las preguntas actualizadas en un archivo
-        guardarPreguntas();
-
-        console.log('Nueva pregunta generada:', nuevaPregunta);
-        return nuevaPregunta;
-
-    } catch (error) {
-        console.error('Error generando pregunta con IA:', error);
-        return null;
     }
+    
+    // Si llegamos aquí, no se pudo generar una pregunta única después de todos los intentos
+    console.error(`No se pudo generar una pregunta única después de ${maxIntentos} intentos`);
+    return null;
 }
 
 // Función para guardar preguntas en archivo JSON
@@ -307,10 +386,72 @@ async function obtenerPreguntaIA() {
 
 // Función para obtener pregunta IA de temática específica
 async function obtenerPreguntaIAPorTematica(tematica) {
-    // Generar varias preguntas hasta conseguir una de la temática deseada
-    for (let intento = 0; intento < 3; intento++) {
-        const nuevaPregunta = await generarPreguntaConIA();
-        if (nuevaPregunta && nuevaPregunta.tematica === tematica) {
+    const maxIntentos = 5; // Máximo número de intentos para generar una pregunta única de la temática específica
+    
+    for (let intento = 1; intento <= maxIntentos; intento++) {
+        console.log(`Intento ${intento} de generar pregunta única de temática ${tematica}...`);
+        
+        const prompt = `Genera una pregunta original y única específicamente sobre el tema: ${tematica}.
+
+Devuelve en formato JSON con esta estructura exacta:
+{
+  "pregunta": "texto de la pregunta",
+  "opciones": ["opción 1", "opción 2", "opción 3"],
+  "correcta": 1,
+  "tematica": "${tematica}"
+}
+
+IMPORTANTE:
+- "correcta" debe ser 1, 2 o 3 (indicando cuál opción es correcta)
+- "tematica" debe ser exactamente: "${tematica}"
+- La pregunta debe ser completamente original y diferente a cualquier pregunta existente
+- Solo devuelve el JSON, sin texto adicional
+- Intento número: ${intento}`;
+
+        try {
+            const respuesta = await consultarMistral(prompt);
+            
+            if (!respuesta) {
+                console.log(`Intento ${intento}: No se recibió respuesta del modelo`);
+                continue;
+            }
+
+            // Intentar parsear la respuesta JSON
+            let nuevaPregunta;
+            try {
+                const jsonMatch = respuesta.match(/\{[\s\S]*\}/);
+                if (!jsonMatch) {
+                    console.log(`Intento ${intento}: No se encontró JSON válido en la respuesta`);
+                    continue;
+                }
+                
+                nuevaPregunta = JSON.parse(jsonMatch[0]);
+            } catch (parseError) {
+                console.error(`Intento ${intento}: Error parseando JSON:`, parseError);
+                continue;
+            }
+
+            // Validar la estructura y temática
+            if (!nuevaPregunta.pregunta || !nuevaPregunta.opciones || 
+                !nuevaPregunta.correcta || !nuevaPregunta.tematica ||
+                nuevaPregunta.opciones.length !== 3 || nuevaPregunta.tematica !== tematica) {
+                console.log(`Intento ${intento}: Estructura inválida o temática incorrecta`);
+                continue;
+            }
+
+            // Verificar si la pregunta ya existe o es similar
+            if (esPreguntaSimilar(nuevaPregunta)) {
+                console.log(`Intento ${intento}: Pregunta similar ya existe, generando otra...`);
+                continue;
+            }
+
+            // Si llegamos aquí, la pregunta es única y de la temática correcta
+            console.log(`¡Pregunta única de ${tematica} generada en el intento ${intento}!`);
+            
+            // Agregar la nueva pregunta al banco
+            preguntas.push(nuevaPregunta);
+            guardarPreguntas();
+            
             return generarURL(
                 nuevaPregunta.pregunta,
                 nuevaPregunta.opciones[0],
@@ -319,11 +460,14 @@ async function obtenerPreguntaIAPorTematica(tematica) {
                 nuevaPregunta.correcta,
                 nuevaPregunta.tematica
             );
+            
+        } catch (error) {
+            console.error(`Intento ${intento}: Error generando pregunta:`, error);
         }
     }
     
     // Si no se consigue, usar una pregunta existente de esa temática
-    console.log(`No se pudo generar pregunta IA de ${tematica}, usando pregunta existente`);
+    console.log(`No se pudo generar pregunta única de ${tematica} después de ${maxIntentos} intentos, usando pregunta existente`);
     return obtenerPreguntaPorTematica(tematica);
 }
 

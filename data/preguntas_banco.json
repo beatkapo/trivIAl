@@ -218,5 +218,25 @@
     ],
     "correcta": 2,
     "tematica": "deportes"
+  },
+  {
+    "pregunta": "¿Cuál es la capital de Ecuador?",
+    "opciones": [
+      "Guayaquil",
+      "Quito",
+      "Cuenca"
+    ],
+    "correcta": 2,
+    "tematica": "historia"
+  },
+  {
+    "pregunta": "¿Cuál es el nombre del personaje principal de la novela 'El señor de los anillos'?",
+    "opciones": [
+      "Frodo",
+      "Sam",
+      "Gandalf"
+    ],
+    "correcta": 1,
+    "tematica": "cultura-general"
   }
 ]
