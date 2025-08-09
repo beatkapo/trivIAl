@@ -6,7 +6,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 // Tu API key de ElevenLabs
-const ELEVENLABS_API_KEY = process.env.ELEVENLABS_API_KEY || 'YOUR_ELEVENLABS_API_KEY_HERE'; // Configura tu API key en variable de entorno
+const ELEVENLABS_API_KEY = process.env.ELEVENLABS_API_KEY || ''; // Pon tu API key aquí, o en un archivo .env que es la mejor práctica
 
 // Voces disponibles en español
 const VOCES_ESPANOL = {
