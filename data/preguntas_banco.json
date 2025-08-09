@@ -238,5 +238,555 @@
     ],
     "correcta": 1,
     "tematica": "cultura-general"
+  },
+  {
+    "pregunta": "¿Cuál es la capital de Argentina?",
+    "opciones": [
+      "Buenos Aires",
+      "La Plata",
+      "Rosario"
+    ],
+    "correcta": 1,
+    "tematica": "historia"
+  },
+  {
+    "pregunta": "¿Cuál es el nombre del personaje principal de la película Matrix?",
+    "opciones": [
+      "Neo",
+      "Morpheus",
+      "Trinity"
+    ],
+    "correcta": 1,
+    "tematica": "cine-television"
+  },
+  {
+    "pregunta": "¿Cuál es la capital de Francia?",
+    "opciones": [
+      "A) París",
+      "B) Lyon",
+      "C) Marsella"
+    ],
+    "correcta": 1,
+    "tematica": "geografia"
+  },
+  {
+    "pregunta": "¿Qué país es la patria de la salsa?",
+    "opciones": [
+      "Colombia",
+      "Cuba",
+      "Puerto Rico"
+    ],
+    "correcta": 3,
+    "tematica": "musica"
+  },
+  {
+    "pregunta": "¿Cuál es el nombre del grupo de punk rock formado en Los Ángeles en 1976 que se separó en 1982 y luego se reunió en 2003?",
+    "opciones": [
+      "Black Flag",
+      "The Damned",
+      "The Stooges"
+    ],
+    "correcta": 1,
+    "tematica": "musica"
+  },
+  {
+    "pregunta": "¿Cuál es la capital de México?",
+    "opciones": [
+      "Guadalajara",
+      "México DF",
+      "Monterrey"
+    ],
+    "correcta": 2,
+    "tematica": "historia"
+  },
+  {
+    "pregunta": "¿Cuál es la capital del Perú?",
+    "opciones": [
+      "Lima",
+      "Bogotá",
+      "Quito"
+    ],
+    "correcta": 1,
+    "tematica": "historia"
+  },
+  {
+    "pregunta": "¿Cuál es el nombre del personaje principal de la novela 1984 de George Orwell?",
+    "opciones": [
+      "Winston Smith",
+      "Peter Gibson",
+      "James Bond"
+    ],
+    "correcta": 1,
+    "tematica": "cultura-general"
+  },
+  {
+    "pregunta": "¿Cuál es el nombre del personaje principal de la serie de televisión Friends?",
+    "opciones": [
+      "Ross",
+      "Chandler",
+      "Monica"
+    ],
+    "correcta": 2,
+    "tematica": "cine-television"
+  },
+  {
+    "pregunta": "¿Quién fue el primer presidente de México después de la Independencia?",
+    "opciones": [
+      "A) Miguel Hidalgo y Costilla",
+      "B) José María Morelos y Pavón",
+      "C) Agustín de Iturbide"
+    ],
+    "correcta": 3,
+    "tematica": "historia"
+  },
+  {
+    "pregunta": "¿Cuál es la capital más grande del mundo por población?",
+    "opciones": [
+      "Tokio",
+      "México D.F.",
+      "São Paulo"
+    ],
+    "correcta": 3,
+    "tematica": "historia"
+  },
+  {
+    "pregunta": "¿Cuál es la capital de Brasil?",
+    "opciones": [
+      "São Paulo",
+      "Río de Janeiro",
+      "Brasília"
+    ],
+    "correcta": 3,
+    "tematica": "geografia"
+  },
+  {
+    "pregunta": "¿Cuál fue la capital del Imperio romano durante su máximo apogeo?",
+    "opciones": [
+      "Roma",
+      "Constantinopla",
+      "Cartago"
+    ],
+    "correcta": 1,
+    "tematica": "historia"
+  },
+  {
+    "pregunta": "¿Cuál es el nombre del primer episodio de la tercera temporada de Friends?",
+    "opciones": [
+      "The Girl Next Door",
+      "The One With the Ultimate Fighting Champion",
+      "The One Where No One's Ready"
+    ],
+    "correcta": 1,
+    "tematica": "cine-television"
+  },
+  {
+    "pregunta": "¿Cuál es el nombre del primer personaje en aparecer en la historia de Los Simpsons?",
+    "opciones": [
+      "Bart Simpson",
+      "Maggie Simpson",
+      "Lisa Simpson"
+    ],
+    "correcta": 1,
+    "tematica": "cultura-general"
+  },
+  {
+    "pregunta": "¿Cuál es la capital geográfica de España?",
+    "opciones": [
+      "Madrid",
+      "Barcelona",
+      "Valencia"
+    ],
+    "correcta": 1,
+    "tematica": "naturaleza-geografia"
+  },
+  {
+    "pregunta": "¿Quién fue considerado el mejor futbolista del siglo XX por la FIFA?",
+    "opciones": [
+      "Diego Maradona",
+      "Pelé",
+      "Ronaldinho"
+    ],
+    "correcta": 2,
+    "tematica": "deportes"
+  },
+  {
+    "pregunta": "¿Quién fue el primer presidente de los Estados Unidos en morir en el cargo?",
+    "opciones": [
+      "George Washington",
+      "John Adams",
+      "Thomas Jefferson"
+    ],
+    "correcta": 1,
+    "tematica": "historia"
+  },
+  {
+    "pregunta": "¿Quién fue el primer hombre en pisar la luna?",
+    "opciones": [
+      "Neil Armstrong",
+      "Buzz Aldrin",
+      "Michael Collins"
+    ],
+    "correcta": 1,
+    "tematica": "historia"
+  },
+  {
+    "pregunta": "¿Qué color es el agua pura?",
+    "opciones": [
+      "Rojo",
+      "Azul",
+      "Verde"
+    ],
+    "correcta": 2,
+    "tematica": "ciencia"
+  },
+  {
+    "pregunta": "¿Cuál es el nombre de la primera computadora personal comercialmente exitosa?",
+    "opciones": [
+      "Macintosh",
+      "Commodore 64",
+      "IBM PC"
+    ],
+    "correcta": 1,
+    "tematica": "tecnologia"
+  },
+  {
+    "pregunta": "¿Cuál es el nombre de la primera mascota en viajar al espacio?",
+    "opciones": [
+      "Astroboy",
+      "Laika",
+      "Luna"
+    ],
+    "correcta": 1,
+    "tematica": "historia"
+  },
+  {
+    "pregunta": "¿Cuál es el nombre de la luna artificial más grande creada por la humanidad?",
+    "opciones": [
+      "La Luna",
+      "El Sol",
+      "Luna 2"
+    ],
+    "correcta": 2,
+    "tematica": "ciencia"
+  },
+  {
+    "pregunta": "¿Cuál es el animal más grande de la tierra?",
+    "opciones": [
+      "Elefante",
+      "Whale Shark",
+      "Blue Whale"
+    ],
+    "correcta": 2,
+    "tematica": "ciencia"
+  },
+  {
+    "pregunta": "¿Cuál es el nombre científico del animal que es conocido popularmente como gato?",
+    "opciones": [
+      "Leo Leopardus",
+      "Felis silvestris catus",
+      "Ursus maritimus"
+    ],
+    "correcta": 2,
+    "tematica": "biologia"
+  },
+  {
+    "pregunta": "¿Cuál es el nombre del personaje de dibujos animados que es un osito negro y lleva una paleta?",
+    "opciones": [
+      "Bart Simpson",
+      "Mickey Mouse",
+      "Paddington"
+    ],
+    "correcta": 2,
+    "tematica": "cultura-general"
+  },
+  {
+    "pregunta": "¿Cuántas letras tiene la palabra 'banana'?",
+    "opciones": [
+      "Seis",
+      "Siete",
+      "Ocho"
+    ],
+    "correcta": 2,
+    "tematica": "cultura-general"
+  },
+  {
+    "pregunta": "¿Cuántos huesos tiene un elefante?",
+    "opciones": [
+      "500",
+      "100",
+      "32"
+    ],
+    "correcta": 2,
+    "tematica": "naturaleza-geografia"
+  },
+  {
+    "pregunta": "¿Cuál es el nombre del primer satélite artificial lanzado por la URSS?",
+    "opciones": [
+      "Sputnik-1",
+      "Luna-1",
+      "Cosmos-1"
+    ],
+    "correcta": 1,
+    "tematica": "ciencia"
+  },
+  {
+    "pregunta": "¿Cuál es la mascota oficial de Windows?",
+    "opciones": [
+      "El gato Boris",
+      "El perro Clippy",
+      "El oso Pipa"
+    ],
+    "correcta": 2,
+    "tematica": "tecnologia"
+  },
+  {
+    "pregunta": "¿Cuál es el nombre de la primera nave espacial soviética que orbitó la Tierra?",
+    "opciones": [
+      "Spaceshuttle",
+      "Sputnik",
+      "Moonrocket"
+    ],
+    "correcta": 1,
+    "tematica": "historia"
+  },
+  {
+    "pregunta": "¿Cuál es el nombre en clave de la primera nave espacial tripulada del programa Apolo?",
+    "opciones": [
+      "Apollo 1",
+      "Apollo 2",
+      "Apollo 3"
+    ],
+    "correcta": 1,
+    "tematica": "ciencia"
+  },
+  {
+    "pregunta": "¿Cuál es el nombre de la primera nave espacial soviética que fue enviada al espacio en 1957?",
+    "opciones": [
+      "Sputnik",
+      "Apollo",
+      "Gagarin"
+    ],
+    "correcta": 1,
+    "tematica": "historia"
+  },
+  {
+    "pregunta": "¿Cuál es el nombre en código de la primera nave espacial soviética que se lanzó al espacio el 4 de octubre de 1957?",
+    "opciones": [
+      "Sputnik",
+      "Vostok",
+      "Mir"
+    ],
+    "correcta": 1,
+    "tematica": "historia"
+  },
+  {
+    "pregunta": "¿Cuál es el nombre del primer satélite artificial lanzado por la Unión Soviética?",
+    "opciones": [
+      "Sputnik 1",
+      "Vanguard 1",
+      "Explorer 1"
+    ],
+    "correcta": 1,
+    "tematica": "ciencia"
+  },
+  {
+    "pregunta": "¿Cuál fue el nombre del primer perro en ir al espacio?",
+    "opciones": [
+      "Laika",
+      "Belka",
+      "Sputnik"
+    ],
+    "correcta": 1,
+    "tematica": "ciencia"
+  },
+  {
+    "pregunta": "¿Cuál es el país que más veces ha ganado el mundial de fútbol?",
+    "opciones": [
+      "Argentina",
+      "Alemania",
+      "Brasil"
+    ],
+    "correcta": 3,
+    "tematica": "deportes"
+  },
+  {
+    "pregunta": "¿Qué famoso guitarrista y cantante se hizo conocido en la década de 1970 por su estilo roquero y su voz potente?",
+    "opciones": [
+      "Jimi Hendrix",
+      "Eric Clapton",
+      "Brian May"
+    ],
+    "correcta": 1,
+    "tematica": "musica"
+  },
+  {
+    "pregunta": "¿Cómo se llama el personaje principal en la novela de Herman Melville \"Moby Dick\"?",
+    "opciones": [
+      "Ahab",
+      "Ishmael",
+      "Captain Ahab"
+    ],
+    "correcta": 2,
+    "tematica": "historia"
+  },
+  {
+    "pregunta": "¿Cuál es el nombre del asteroide más grande del sistema solar?",
+    "opciones": [
+      "Vesta",
+      "Ceres",
+      "Plutón"
+    ],
+    "correcta": 1,
+    "tematica": "ciencia"
+  },
+  {
+    "pregunta": "¿Quién es el futbolista argentino más joven en ganar un Mundial?",
+    "opciones": [
+      "Lionel Messi",
+      "Lautaro Martinez",
+      "Paulo Dybala"
+    ],
+    "correcta": 1,
+    "tematica": "deportes"
+  },
+  {
+    "pregunta": "¿Qué país es el mayor productor de café del mundo?",
+    "opciones": [
+      "Brasil",
+      "Mexico",
+      "Colombia"
+    ],
+    "correcta": 1,
+    "tematica": "deportes"
+  },
+  {
+    "pregunta": "¿Cuál es el nombre completo del primer futbolista en ganar el Balón de Oro?",
+    "opciones": [
+      "Lionel Messi",
+      "Diego Maradona",
+      "Michel Platini"
+    ],
+    "correcta": 2,
+    "tematica": "deportes"
+  },
+  {
+    "pregunta": "¿Cuál es el nombre del primer astro que se puso a la venta en un supermercado?",
+    "opciones": [
+      "Estrella",
+      "Marte",
+      "Luna"
+    ],
+    "correcta": 1,
+    "tematica": "ciencia"
+  },
+  {
+    "pregunta": "¿Cuál es el nombre del primer astroespacial soviético??",
+    "opciones": [
+      "Iuri Gagarin",
+      "Serguéi Koroliov",
+      "Konstantín Eésakov"
+    ],
+    "correcta": 1,
+    "tematica": "historia"
+  },
+  {
+    "pregunta": "¿Qué equipo de fútbol argentino es el único en haber ganado dos veces la Copa Libertadores de América?",
+    "opciones": [
+      "Boca Juniors",
+      "River Plate",
+      "Racing Club"
+    ],
+    "correcta": 2,
+    "tematica": "deportes"
+  },
+  {
+    "pregunta": "¿Cuál es el nombre del personaje principal de la película El Padrino?",
+    "opciones": [
+      "Michael Corleone",
+      "Tom Hanks",
+      "Harry Potter"
+    ],
+    "correcta": 1,
+    "tematica": "cine-television"
+  },
+  {
+    "pregunta": "¿Cuál es el nombre del primer astro en ser visitado por un ser humano?",
+    "opciones": [
+      "Tierra",
+      "Luna",
+      "Marte"
+    ],
+    "correcta": 2,
+    "tematica": "ciencia"
+  },
+  {
+    "pregunta": "¿Cuál es el nombre completo del primer escritor en ganar un Premio Nobel de Literatura?",
+    "opciones": [
+      "Santiago Ramón y Cajal",
+      "Mauricio Bacarisse",
+      "Hermann Ebbinghaus"
+    ],
+    "correcta": 1,
+    "tematica": "historia"
+  },
+  {
+    "pregunta": "¿Quién fue el primer jugador en marcar un triplete en la final de la Copa del Mundo?",
+    "opciones": [
+      "Justin Fashanu",
+      "Josef Bican",
+      "Michael Owen"
+    ],
+    "correcta": 1,
+    "tematica": "deportes"
+  },
+  {
+    "pregunta": "¿Qué país es el mayor productor mundial de café?",
+    "opciones": [
+      "Brasil",
+      "Vietnam",
+      "Mexico"
+    ],
+    "correcta": 1,
+    "tematica": "cultura-general"
+  },
+  {
+    "pregunta": "¿Quién fue el primer ser humano en pisar la luna?",
+    "opciones": [
+      "Albert Einstein",
+      "Stephen Hawking",
+      "Neil Armstrong"
+    ],
+    "correcta": 3,
+    "tematica": "ciencia"
+  },
+  {
+    "pregunta": "¿Cuál es el nombre del personaje más famoso creado por J.K. Rowling que tiene la habilidad de hacer hechizos?",
+    "opciones": [
+      "Harry Potter",
+      "Ron Weasley",
+      "Hermione Granger"
+    ],
+    "correcta": 1,
+    "tematica": "cultura-general"
+  },
+  {
+    "pregunta": "¿Cuál es el nombre completo del actor que interpretó a Forrest Gump en la película homónima?",
+    "opciones": [
+      "Tom Hanks",
+      "Leonardo DiCaprio",
+      "Johnny Depp"
+    ],
+    "correcta": 1,
+    "tematica": "cine-television"
+  },
+  {
+    "pregunta": "¿Cuál fue el nombre del primer hombre en llegar a la cima del monte Everest?",
+    "opciones": [
+      "Sir Edmund Hillary",
+      "Tenzing Norgay",
+      "Jorge Miguel"
+    ],
+    "correcta": 1,
+    "tematica": "historia"
   }
 ]

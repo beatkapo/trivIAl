@@ -15,16 +15,12 @@
       margin: 0;
     }
     .trivial-card {
-      background-image: url('../../assets/verde.png');
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
       border-radius: 16px;
       box-shadow: 0 4px 24px rgba(0,0,0,0.12);
       padding: 32px 24px;
-      width: 360px;
-      height: 600px;
-      max-width: 100vw;
+      width: 80%;
+      height: 80%;
+      max-width: 100vh;
       max-height: 100vh;
       min-width: 360px;
       min-height: 600px;
@@ -38,38 +34,49 @@
     
     /* Temáticas específicas */
     .trivial-card.historia {
-      background: linear-gradient(135deg, #8B4513 0%, #A0522D 50%, #D2691E 100%);
+      background: linear-gradient(135deg, #8B4513 0%, #A0522D 50%, #CD853F 100%);
       box-shadow: 0 4px 24px rgba(139,69,19,0.3);
     }
     
     .trivial-card.cultura-general {
-      background: linear-gradient(135deg, #4A90E2 0%, #5BA0F2 50%, #7BB3F0 100%);
-      box-shadow: 0 4px 24px rgba(74,144,226,0.3);
+      background: linear-gradient(135deg, #4169E1 0%, #6495ED 50%, #87CEEB 100%);
+      box-shadow: 0 4px 24px rgba(65,105,225,0.3);
     }
     
     .trivial-card.deportes {
-      background: linear-gradient(135deg, #28A745 0%, #34CE57 50%, #48D364 100%);
-      box-shadow: 0 4px 24px rgba(40,167,69,0.3);
+      background: linear-gradient(135deg, #228B22 0%, #32CD32 50%, #90EE90 100%);
+      box-shadow: 0 4px 24px rgba(34,139,34,0.3);
     }
     
     .trivial-card.musica {
-      background: linear-gradient(135deg, #9B59B6 0%, #B370CF 50%, #C885D8 100%);
-      box-shadow: 0 4px 24px rgba(155,89,182,0.3);
+      background: linear-gradient(135deg, #8A2BE2 0%, #9370DB 50%, #BA55D3 100%);
+      box-shadow: 0 4px 24px rgba(138,43,226,0.3);
     }
     
     .trivial-card.cine-television {
-      background: linear-gradient(135deg, #E74C3C 0%, #F1948A 50%, #F8B2B2 100%);
-      box-shadow: 0 4px 24px rgba(231,76,60,0.3);
+      background: linear-gradient(135deg, #DC143C 0%, #F08080 50%, #FA8072 100%);
+      box-shadow: 0 4px 24px rgba(220,20,60,0.3);
     }
     
     .trivial-card.naturaleza-geografia {
-      background: linear-gradient(135deg, #2ECC71 0%, #58D68D 50%, #82E0AA 100%);
-      box-shadow: 0 4px 24px rgba(46,204,113,0.3);
+      background: linear-gradient(135deg, #2E8B57 0%, #3CB371 50%, #66CDAA 100%);
+      box-shadow: 0 4px 24px rgba(46,139,87,0.3);
     }
     
     .trivial-card.famosos {
-      background: linear-gradient(135deg, #F39C12 0%, #F7DC6F 50%, #F9E79F 100%);
-      box-shadow: 0 4px 24px rgba(243,156,18,0.3);
+      background: linear-gradient(135deg, #DAA520 0%, #F0E68C 50%, #FFFF99 100%);
+      box-shadow: 0 4px 24px rgba(218,165,32,0.3);
+    }
+    
+    .trivial-card.ciencia {
+      background: linear-gradient(135deg, #20B2AA 0%, #48D1CC 50%, #7FFFD4 100%);
+      box-shadow: 0 4px 24px rgba(32,178,170,0.3);
+    }
+    
+    /* Para temáticas no reconocidas - usar un degradado neutro */
+    .trivial-card {
+      background: linear-gradient(135deg, #6C7B7F 0%, #8E9B9F 50%, #B0BBBF 100%);
+      box-shadow: 0 4px 24px rgba(108,123,127,0.3);
     }
     
     /* Bordes de botones según temática */
@@ -100,13 +107,17 @@
     .famosos .option { border-color: #F39C12; }
     .famosos .option.correct { border-color: #D68910; }
     .famosos .option-back { background: #D68910; border-color: #B7950B; }
+    
+    .ciencia .option { border-color: #17A2B8; }
+    .ciencia .option.correct { border-color: #138496; }
+    .ciencia .option-back { background: #138496; border-color: #0C5460; }
     @keyframes floatIn {
       0% { transform: translateY(40px) scale(0.95); opacity: 0; }
       100% { transform: translateY(0) scale(1); opacity: 1; }
     }
     .question {
       font-family: 'Montserrat', Arial, sans-serif;
-      font-size: 2.3rem;
+      font-size: 4.3rem;
       font-weight: 900;
       color: #ffffff;
       min-height: 64px;
@@ -144,10 +155,10 @@
     }
     .temporizador {
       position: absolute;
-      top: 20px;
-      right: 15px;
-      width: 60px;
-      height: 60px;
+      top: 40px;
+      right: 30px;
+      width: 120px;
+      height: 120px;
       background: linear-gradient(135deg, #ff6b6b, #ff4757);
       border: 3px solid #ffffff;
       border-radius: 50%;
@@ -155,7 +166,7 @@
       align-items: center;
       justify-content: center;
       font-family: 'Montserrat', Arial, sans-serif;
-      font-size: 1.8rem;
+      font-size: 2.8rem;
       font-weight: 900;
       color: #ffffff;
       text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
@@ -208,7 +219,7 @@
       min-height: 0;
       padding: 0;
       font-family: 'Montserrat', Arial, sans-serif;
-      font-size: 1.4rem;
+      font-size: 2.4rem;
       font-weight: 700;
       color: #272727;
       cursor: pointer;
@@ -353,7 +364,8 @@
         'musica': 'Música',
         'cine-television': 'Cine y Televisión',
         'naturaleza-geografia': 'Naturaleza y Geografía',
-        'famosos': 'Famosos'
+        'famosos': 'Famosos',
+        'ciencia': 'Ciencia'
       };
       
       return nombres[tematica] || 'Pregunta General';
@@ -482,8 +494,18 @@
           b.disabled = true;
           if (opciones[i].correcta) {
             b.classList.add('correct');
+            
+            // NO reproducir sonido aquí - se reproduce desde el script de grabación
+            // const audioCorrect = new Audio('../../output/audios/correct.mp3');
+            // audioCorrect.play().then(() => {
+            //   console.log('🔊 Sonido de respuesta correcta reproducido');
+            // }).catch(e => {
+            //   console.log('⚠️ No se pudo reproducir sonido de respuesta correcta:', e);
+            // });
+            
             // Agregar animación de giro al contenedor para la respuesta correcta
             optionContainers[i].classList.add('flip');
+            
           } else if (i === idx) {
             b.classList.add('incorrect');
           }

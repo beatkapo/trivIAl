@@ -8,6 +8,10 @@ yarn-error.log*
 output/videos/*
 !output/videos/.gitkeep
 
+# Generated audio files (except correct.mp3)
+output/audios/pregunta_*.mp3
+output/audios/prueba_*.mp3
+
 # Temporary files
 *.tmp
 *.temp

@@ -1,18 +1,39 @@
-const puppeteer = require('puppeteer');
-const { exec } = require('child_process');
-const path = require('path');
-const fs = require('fs');
-const { 
+import puppeteer from 'puppeteer';
+import { exec } from 'child_process';
+import path from 'path';
+import fs from 'fs';
+import { fileURLToPath } from 'url';
+import { 
   obtenerPreguntaAleatoria, 
   obtenerPreguntaPorIndice, 
   obtenerPreguntaPorTematica, 
   crearPreguntaPersonalizada,
   obtenerPreguntaIA,
   obtenerPreguntaIAPorTematica
-} = require('../core/generar_pregunta');
+} from '../core/generar_pregunta.js';
 
 // Importar la función de ElevenLabs
 import { generarAudioPregunta } from '../core/elevenlabs_audio.mjs';
+
+// Para obtener __dirname en ES modules
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+// Función para reproducir audio en Windows
+function reproducirAudio(rutaArchivo) {
+  return new Promise((resolve, reject) => {
+    const comando = `powershell -c "(New-Object Media.SoundPlayer '${rutaArchivo}').PlaySync()"`;
+    exec(comando, (error, stdout, stderr) => {
+      if (error) {
+        console.error('❌ Error reproduciendo audio:', error);
+        reject(error);
+      } else {
+        console.log('🔊 Audio reproducido exitosamente');
+        resolve();
+      }
+    });
+  });
+}
 
 // Función para generar nombre de archivo único
 function generarNombreUnico(tematica = 'general', tipo = 'banco') {
@@ -145,6 +166,16 @@ function crearDirectorioVideos() {
   // Abre el archivo con los parámetros
   await page.goto(url);
 
+  // Generar audio de la pregunta ANTES de empezar la grabación
+  console.log('🎤 Generando audio de la pregunta...');
+  let rutaAudio;
+  try {
+    rutaAudio = await generarAudioPregunta(url);
+    console.log('✅ Audio generado:', rutaAudio);
+  } catch (error) {
+    console.error('❌ Error generando audio:', error);
+    console.log('⚠️ Continuando sin audio...');
+  }
 
   // Comando ffmpeg para grabar la región de la ventana CON AUDIO
   // Volviendo a Mezcla estéreo con técnicas avanzadas de sincronización
@@ -164,8 +195,24 @@ function crearDirectorioVideos() {
     }
   });
 
-  // Espera el tiempo de la animación (18 segundos)
-  await new Promise(resolve => setTimeout(resolve, 18000));
+  // Esperar un momento para que la grabación se establezca
+  await new Promise(resolve => setTimeout(resolve, 1000));
+
+  // Reproducir el audio de la pregunta durante la grabación
+  if (rutaAudio && fs.existsSync(rutaAudio)) {
+    console.log('🔊 Reproduciendo audio de la pregunta...');
+    try {
+      // Reproducir audio de forma asíncrona para no bloquear la grabación
+      reproducirAudio(rutaAudio).catch(err => {
+        console.error('⚠️ Error en reproducción de audio:', err);
+      });
+    } catch (error) {
+      console.error('⚠️ Error iniciando reproducción:', error);
+    }
+  }
+
+  // Espera el tiempo restante de la animación (17 segundos más)
+  await new Promise(resolve => setTimeout(resolve, 17000));
 
   // Detén la grabación
   ffmpeg.kill('SIGINT');
