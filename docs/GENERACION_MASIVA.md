@@ -29,9 +29,22 @@ npm run generar-videos 100 3000
 
 ### Requisitos previos:
 1. **LMStudio** ejecutándose en `localhost:1234` con un modelo cargado
-2. **ElevenLabs API** configurada en el archivo de configuración
+2. **ElevenLabs API** configurada (ver configuración de variables de entorno)
 3. **ffmpeg** instalado y configurado
 4. **Audio "Mezcla estéreo (Realtek Audio)"** disponible
+
+### Variables de entorno:
+1. Copia el archivo `.env.example` a `.env`:
+   ```bash
+   cp .env.example .env
+   ```
+
+2. Edita `.env` y configura tu API key de ElevenLabs:
+   ```
+   ELEVENLABS_API_KEY=tu_api_key_aqui
+   ```
+
+3. Obtén tu API key desde: https://elevenlabs.io/app/settings
 
 ### Parámetros:
 - **número_de_videos**: Cantidad de videos a generar (por defecto: 10)
